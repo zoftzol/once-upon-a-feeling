@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta charset="utf-8">
-<title>Once Upon a Feeling</title>
+<title>Once Upon a Feeling - กาลครั้งหนึ่งของความรู้สึก</title>
 <meta name="description" content="กาลครั้งหนึ่งของความรู้สึก — นิทานแบบมีปฏิสัมพันธ์เพื่อเรียนรู้การรับมือกับความโกรธ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -330,7 +330,7 @@ button.tarot-tile:active{transform:scale(.95)}
 .sep-box{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(8px, 1.6cqh, 16px);width:min(calc(100% - 40px), 360px);
   opacity:0;transform:scale(.94);transition:transform .4s var(--ease), opacity .4s var(--ease)}
 .tarot-dialog.is-in .sep-box{transform:none;opacity:1}
-.sep-sticker{position:relative;width:min(64cqw, 34cqh, 250px);aspect-ratio:465/480}
+.sep-sticker{position:relative;width:min(64cqw, 34cqh, 250px);aspect-ratio:1/1}   /* locked + colour stickers share one square frame */
 .sep-sticker img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
   filter:drop-shadow(0 0 10px rgba(255,255,255,.95)) drop-shadow(0 0 26px rgba(255,255,255,.8)) drop-shadow(0 6px 10px rgba(90,60,30,.18))}
 .sep-color{opacity:0;transform:scale(.86)}
@@ -1179,7 +1179,7 @@ button.tarot-tile:active{transform:scale(.95)}
 
 /* ---------- Credits ---------- */
 .credits{background:linear-gradient(180deg, #D4E3C4 0%, #E9F0DF 45%, #FFF7E8 100%)}   /* sage green → light green → cream; no pink / purple */
-.credits-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;padding:calc(18px + env(safe-area-inset-top,0px)) max(16px, env(safe-area-inset-right,0px)) 0 max(16px, env(safe-area-inset-left,0px))}
+.credits-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;padding:calc(18px + env(safe-area-inset-top,0px)) max(16px, env(safe-area-inset-right,0px)) 28px max(16px, env(safe-area-inset-left,0px))}
 .credits-branch{position:absolute;top:0;left:0;width:64px;height:auto;pointer-events:none}
 .cloud{position:absolute;border-radius:999px;background:#FFF7F3;opacity:.8;filter:blur(1px);pointer-events:none}
 .credits-head{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:8px 22px 14px;border-radius:40px;background:radial-gradient(ellipse at 50% 55%, rgba(255,248,236,.95) 55%, rgba(255,248,236,0) 72%)}
@@ -1212,6 +1212,9 @@ button.tarot-tile:active{transform:scale(.95)}
 .c-cap{font-size:.76rem;color:var(--ink-soft)}
 .c-name{margin:2px 0;padding:2px 14px;border-radius:999px;background:var(--pink);font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--ink)}
 .c-text{margin:0;font-size:.86rem;line-height:1.6;color:var(--ink)}
+.nobr{white-space:nowrap}
+.c-project{font-weight:600;text-wrap:balance}
+.c-course b{font-weight:700}
 .pending{color:#9A6B5A;font-style:italic}
 .credits-flowers{width:calc(100% + 32px);max-width:none;height:auto;aspect-ratio:284/44;margin:6px -16px 0}
 
@@ -1293,7 +1296,8 @@ button.tarot-tile:active{transform:scale(.95)}
 @keyframes cr-pop{0%{transform:scale(.86);opacity:.4}100%{transform:scale(1);opacity:1}}
 .cr-card.is-off{border-style:dashed}
 .cr-again{display:inline-block;margin-top:2px;padding:0 8px;border-radius:999px;background:#FFE7C2;color:#8A4B12;font-style:normal;font-size:max(10.5px, calc(22 * var(--u)));font-weight:600}
-.cr-ghost{position:fixed;z-index:9999;margin:0;pointer-events:none;will-change:transform;box-shadow:0 14px 24px -8px rgba(70,40,10,.45) !important;opacity:.97}
+.cr-ghost:not(.is-settling){transition:none !important}
+.cr-ghost{position:fixed;z-index:9999;margin:0;pointer-events:none;will-change:transform;animation:none !important;box-shadow:0 14px 24px -8px rgba(70,40,10,.45) !important;opacity:.97}
 .cr-ghost .cr-again{display:none}
 /* drop zones */
 .cr-zones{display:grid;gap:calc(22 * var(--u));margin-bottom:calc(22 * var(--u))}
@@ -1723,7 +1727,11 @@ button.tarot-tile:active{transform:scale(.95)}
 /* notebook text: real HTML on the picture's page regions */
 .jw-spread{position:absolute;inset:0;visibility:hidden}
 .jw-spread.is-current{visibility:visible}
-.jw-page{position:absolute;overflow:hidden;font-family:var(--font-display);font-size:var(--fs);line-height:1.5;color:#65442F;overflow-wrap:anywhere}
+.jw-page{position:absolute;overflow:hidden;box-sizing:border-box;padding:.18em 0 .3em;font-family:var(--font-display);font-size:var(--fs);line-height:var(--jw-lh, 1.5);color:#65442F;overflow-wrap:normal;word-break:normal}
+.jw-page .w{white-space:nowrap}
+/* Mali stacks the tone mark above สระอี/อึ (นี้, ขึ้น, ที่) higher than the heading's line box: when one of these two
+   headings opens a page, give it head-room so the page's overflow clip can't shave the marks (writing and reading) */
+.jw-page > .jw-entry:first-child:is([data-entry="event"], [data-entry="consequence"]) > .jw-eh{padding-top:.5em}   /* one Thai word = one unbreakable run: lines break only between words */
 .jw-entry{margin:0 0 .5em}
 .jw-eh{margin:0;font-size:1.06em;font-weight:700;line-height:1.35;color:#A0482A}
 .jw-et{margin:0;font-weight:500}
@@ -1942,19 +1950,22 @@ button.tarot-tile:active{transform:scale(.95)}
 .w2-intro{margin:0;width:100%;max-width:400px;box-sizing:border-box;padding:22px 18px 22px;border-radius:28px;gap:14px;box-shadow:0 6px 14px -8px rgba(90,110,60,.35)}
 .w2-intro .welcome-heading{font-size:clamp(1.05rem, 5vw, 1.22rem)}
 .w2-intro .welcome-text{font-size:clamp(.9rem, 4.1vw, .98rem)}
+.welcome2 .w2-intro .w2-head{font-size:clamp(.98rem, 4.4vw, 1.08rem);font-weight:600;line-height:1.45;padding:clamp(5px, .9cqh, 8px) 16px}
+.welcome2 .w2-intro .w2-text{max-width:32ch;margin:0 auto;font-size:clamp(.84rem, 3.7vw, .9rem);line-height:1.6;text-wrap:balance}
+.w2-course{margin:0;padding-top:6px;border-top:1.5px dashed rgba(200,160,120,.45);max-width:100%;font-size:clamp(.66rem, 2.9vw, .74rem);line-height:1.45;color:var(--ink-soft);opacity:.85;text-align:center;text-wrap:balance}
 .w2-intro .sparks{margin-top:2px}
 .w2-intro .w2-start{width:100%;min-width:0}
 /* Welcome fit-to-screen: everything in one viewport. Sizes come from the screen's real height (cqh of the
    welcome view, which fills the 9:16 app frame); artwork is sized by height so it scales proportionally. */
 .welcome.welcome2{container-type:size}
-.welcome2 .w2-stage{height:100%;min-height:0;justify-content:center;gap:clamp(8px, 1.9cqh, 20px);
+.welcome2 .w2-stage{height:100%;min-height:0;justify-content:center;gap:clamp(10px, 2.6cqh, 28px);
   padding-top:max(clamp(46px, 8cqh, 64px), calc(env(safe-area-inset-top,0px) + 44px));padding-bottom:max(clamp(14px, 2.6cqh, 28px), calc(env(safe-area-inset-bottom,0px) + 12px))}
 .welcome2 .w2-title{width:auto;flex:none}
-.welcome2 .w2-title img{display:block;width:auto;height:min(26cqh, calc(min((100cqw - 44px) * .8, 360px) * .612))}   /* logo ≈ 80% of the content width (stage minus its 22px side padding) */
-.welcome2 .w2-pair{width:auto;margin-bottom:-4px;flex:none;--pair-h:min(20cqh, calc(min(86cqw, 340px) * .585))}
+.welcome2 .w2-title img{display:block;width:auto;height:min(25cqh, calc(min((100cqw - 44px) * .8, 360px) * .612))}   /* logo ≈ 80% of the content width (stage minus its 22px side padding) */
+.welcome2 .w2-pair{width:auto;margin-bottom:-4px;flex:none;--pair-h:min(19cqh, calc(min(86cqw, 340px) * .585))}   /* logo + characters are the stars of the page */
 .welcome2 .w2-rabbit{width:auto;height:var(--pair-h)}
 .welcome2 .w2-turtle{width:auto;height:calc(var(--pair-h) * .55)}
-.welcome2 .w2-intro{flex:none;padding:clamp(14px, 2.6cqh, 22px) 18px;gap:clamp(8px, 1.6cqh, 14px)}
+.welcome2 .w2-intro{flex:none;padding:clamp(12px, 2.2cqh, 22px) 16px;gap:clamp(6px, 1.3cqh, 14px)}
 .welcome2 .w2-intro .welcome-heading{padding:clamp(6px, 1.1cqh, 10px) 20px;line-height:1.4}
 .welcome2 .w2-intro .welcome-text{line-height:1.62}
 .welcome2 .w2-intro .btn-primary{min-height:clamp(48px, 8cqh, 58px)}
@@ -1963,6 +1974,11 @@ button.tarot-tile:active{transform:scale(.95)}
   .welcome2 .w2-intro .welcome-text{font-size:.86rem;line-height:1.5}
   .welcome2 .w2-intro .btn-primary{font-size:1.12rem}
   .welcome2 .w2-intro .sparks{margin-top:0}
+  .welcome2 .w2-intro .w2-head{font-size:.94rem}
+}
+@container (max-height: 700px){   /* short phones (360×640, 375×667) */
+  .welcome2 .w2-title img{height:min(21cqh, calc(min((100cqw - 44px) * .8, 360px) * .612))}
+  .welcome2 .w2-pair{--pair-h:min(16cqh, calc(min(86cqw, 340px) * .585))}
 }
 </style>
 
@@ -2002,7 +2018,7 @@ button.tarot-tile:active{transform:scale(.95)}
 const MAP_SIZE = { w: 294, h: 507 };
 const STICKER_W = 84;                          // sticker width on the map, in map-bg pixels (~30% of the map)
 // Sticker art = latest set (assets/stickers3/: round coloured-background stickers, transparent PNG cut to the white disc). Gray "?" sticker unchanged (stickers2). Older sets kept.
-const STICKER_LOCKED = { src: "assets/stickers2/sticker-locked.webp", w: 451, h: 480 };
+const STICKER_LOCKED = { src: "assets/stickers3/sticker-locked.webp", w: 480, h: 480 };   // Untitled design (3).png — same 956 px frame as the colour stickers (old gray one kept in stickers2)
 const MAP_FINISH = { x: 262, y: 380 };         // dashed path ends at the finish flag painted in the map
 const ACTIVITIES = [
   { id: "timeOut",                roman: "I",   slug: "time-out",                name: "Time Out",
@@ -2151,11 +2167,14 @@ Object.values(TAROT_CARDS).forEach(c => { c.back.alt += TAROT_SECTIONS; });
 // Dialogue is part of the artwork; alt text transcribes it for screen readers.
 // Comic cover — shown above page 1 in the same scroll. Title is part of the artwork (no HTML title on top).
 // Welcome introduction text (editable; the educational wording may be revised later)
-const WELCOME_INTRO = {
-  heading: ["เรียนรู้การรับมือกับความโกรธ", "ผ่านนิทานแบบมีปฏิสัมพันธ์"],
-  textBefore: "ร่วมเดินทางไปกับเรื่องราวของกระต่ายและเต่า สำรวจความรู้สึกของตัวละคร และทำความรู้จักกับ ",
-  highlight: "6 เทคนิค",
-  textAfter: "การรับมือกับความโกรธที่สามารถนำไปปรับใช้ในชีวิตประจำวันได้",
+// Full academic project title (verbatim). Split only into phrases that may wrap between each other —
+// joined they are the exact title (no spaces added); each phrase never breaks inside.
+const PROJECT_TITLE_PARTS = ["เว็บแอปพลิเคชัน", "แบบมีปฏิสัมพันธ์", "เพื่อส่งเสริมการเรียนรู้", "วิธีรับมือความโกรธ", "ในสถานการณ์เฉพาะหน้า", "สำหรับนักศึกษา"];
+const projectTitleHTML = () => PROJECT_TITLE_PARTS.map(p => `<span class="nobr">${esc(p)}</span>`).join("<wbr>");
+const WELCOME_INTRO = {   // storybook welcome (the full academic title lives on the Credits page)
+  heading: ["เรียนรู้ 6 วิธีรับมือความโกรธ", "ผ่านนิทานแบบมีปฏิสัมพันธ์"],
+  text: "ร่วมเดินทางไปกับกระต่ายและเต่า สำรวจความรู้สึก และเรียนรู้วิธีรับมือความโกรธที่สามารถนำไปปรับใช้ในชีวิตประจำวัน",
+  course: "โครงงานนี้เป็นส่วนหนึ่งของรายวิชา LSE491 Learning Portfolio 4",
   button: "เริ่มอ่านนิทาน",          // first visit → opens the story from the beginning
   buttonReturning: "เรียนรู้ต่อ",   // returning visitor → opens the Activity Map (progress kept)
 };
@@ -2191,12 +2210,13 @@ const STORY_PANELS = [
 
 // Credits text — transcribed from the Credits wireframe. Please confirm spelling before release.
 const CREDITS = {
-  lede: "นิทานแบบมีปฏิสัมพันธ์เพื่อการเรียนรู้วิธีรับมือกับความโกรธ ผ่านเรื่องราวของกระต่ายกับเต่า",
+  lede: ["เรื่องราวของกระต่ายกับเต่า", "สู่การเรียนรู้ 6 วิธีรับมือความโกรธ", "ผ่านกิจกรรมแบบมีปฏิสัมพันธ์"],   // 3 centred lines
   createdBy: { caption: "ผู้สร้างสรรค์ผลงาน", name: "นางสาวธนภร ประถมสาสน์",
     text: "ออกแบบเนื้อหาการเรียนรู้ เรื่องราว ตัวละคร ภาพประกอบ และประสบการณ์การเรียนรู้ผ่านเว็บไซต์" },
-  academic: { caption: "เกี่ยวกับโครงการ",
-    text: "ผลงานนี้เป็นส่วนหนึ่งของโครงการวิจัยระดับปริญญาตรี คณะวิทยาการเรียนรู้และศึกษาศาสตร์ หลักสูตรศิลปศาสตรบัณฑิต สาขาวิชาวิทยาการเรียนรู้ มหาวิทยาลัยธรรมศาสตร์",
+  academic: { caption: "โครงงานทางวิชาการ",   // text = PROJECT_TITLE_PARTS (full title, never shortened)
     advisorCaption: "อาจารย์ที่ปรึกษา", advisor: "ผศ.ดร.ญาดา อรรถอนันต์" },
+  course: { caption: "ข้อมูลรายวิชาและการศึกษา",   // หลักสูตร / สาขาวิชา: wording exactly as in the earlier Credits text
+    lines: ["LSE491 Learning Portfolio 4", "หลักสูตรศิลปศาสตรบัณฑิต", "สาขาวิชาวิทยาการเรียนรู้", "คณะวิทยาการเรียนรู้และศึกษาศาสตร์", "มหาวิทยาลัยธรรมศาสตร์", "ปีการศึกษา 2569"] },
   thanks: { caption: "คำขอบคุณ",
     text: "ขอขอบคุณอาจารย์ที่ปรึกษา ผู้เชี่ยวชาญ และผู้มีส่วนร่วมทุกท่านที่ให้คำแนะนำและสนับสนุนการพัฒนาผลงานชิ้นนี้" },
 };
@@ -2342,8 +2362,9 @@ const Screens = {
             <img class="w2-turtle" src="assets/welcome2/turtle-v3.webp" width="720" height="450" alt="เต่านอนเท้าคางยิ้มอย่างสบายใจ">
           </div>
           <section class="w2-intro welcome-card" aria-labelledby="w2-intro-h">
-            <h2 class="welcome-heading" id="w2-intro-h">${WELCOME_INTRO.heading.map(esc).join("<br>")}</h2>
-            <p class="welcome-text">${esc(WELCOME_INTRO.textBefore)}<span class="hl">${esc(WELCOME_INTRO.highlight)}</span>${esc(WELCOME_INTRO.textAfter)}</p>
+            <h2 class="welcome-heading w2-head" id="w2-intro-h">${WELCOME_INTRO.heading.map(t => `<span class="nobr">${esc(t)}</span>`).join("<br>")}</h2>
+            <p class="welcome-text w2-text">${["เรียนรู้", "ความรู้สึก", "ชีวิตประจำวัน"].reduce((t, k) => t.replace(k, `<span class="nobr">${k}</span>`), esc(WELCOME_INTRO.text))}</p>
+            <p class="w2-course">${esc(WELCOME_INTRO.course).replace("LSE491 Learning Portfolio 4", '<span class="nobr">LSE491 Learning Portfolio 4</span>')}</p>
             <div class="sparks"><button class="btn-primary w2-start" data-action="start">${esc(returning ? WELCOME_INTRO.buttonReturning : WELCOME_INTRO.button)} ${ICON.chevron}</button></div>
           </section>
         </div>
@@ -2541,7 +2562,7 @@ const Screens = {
             <h1 id="c-title">Credits</h1>
             <span class="ribbon">เบื้องหลังเรื่องราว</span>
             <p class="credits-logo"><img src="assets/welcome2/title-v3.webp" width="1000" height="612" alt="Once Upon a Feeling — กาลครั้งหนึ่งของความรู้สึก" decoding="async"></p>
-            <p class="credits-lede">${val(c.lede)}</p>
+            <p class="credits-lede">${c.lede.map(esc).join("<br>")}</p>
           </header>
           <div class="divider-heart" aria-hidden="true">${ICON.heart}</div>
           <div class="cards">
@@ -2553,8 +2574,13 @@ const Screens = {
             <article class="c-card">
               <div class="c-icon"><img src="assets/credits/credits-pin.webp" alt="" aria-hidden="true"></div>
               <div class="c-body">${label("Academic Project")}<span class="c-cap">${c.academic.caption}</span>
-                <p class="c-text">${val(c.academic.text)}</p><span class="c-cap">${c.academic.advisorCaption}</span>
+                <p class="c-text c-project">${projectTitleHTML()}</p><span class="c-cap">${c.academic.advisorCaption}</span>
                 <span class="c-name">${val(c.academic.advisor)}</span></div>
+            </article>
+            <article class="c-card">
+              <div class="c-icon"><img src="assets/credits/credits-chat.webp" alt="" aria-hidden="true"></div>
+              <div class="c-body">${label("Course Information")}<span class="c-cap">${c.course.caption}</span>
+                <p class="c-text c-course">${c.course.lines.map((t, i) => i === 0 ? `<b>${esc(t)}</b>` : esc(t)).join("<br>")}</p></div>
             </article>
             <article class="c-card">
               <div class="c-icon"><img src="assets/credits/credits-smile.webp" alt="" aria-hidden="true"></div>
@@ -4220,7 +4246,7 @@ const GR_STEPS = [
   { id: "hear", type: "hear", count: 3, title: "3 สิ่งที่ได้ยิน", hint: "กดฟังเสียง แล้วพิมพ์สิ่งที่ได้ยิน 3 อย่าง", counter: "สิ่งที่ได้ยิน",
     doneLabel: "ครบแล้ว", doneMsg: "เยี่ยมเลย! ได้ยินครบ 3 อย่างแล้ว",
     bg: "assets/grounding/see-bg.webp",          // same riverside picture as Step 1
-    audio: "assets/audio/grounding-hearing.mp3", // supplied nature-sound file; set to null to show "ยังไม่ได้เพิ่มไฟล์เสียง"
+    audio: "assets/audio/grounding-hearing-mix-120s.mp3", // 2:00 mix: original nature sound (first 120 s) + frog croaks (looped) + insects (first 120 s); original kept as grounding-hearing.mp3
     rabbit: { frame1: "assets/grounding/listen-1-v2.webp", frame2: "assets/grounding/listen-2-v2.webp", w: 800, h: 1027, frameDuration: 650,   // Rabbit - Listening01 ⇄ 02
               alt: "กระต่ายนั่งหลับตา ขยับหูซ้ายขวาตั้งใจฟังเสียงรอบตัว" },
     maxLen: 80 },
@@ -4946,9 +4972,9 @@ function CrDragDrop(scope, { onDrop, scroller }) {
   let drag = null, raf = 0, suppressClick = false;
   // Hit test on the WHOLE visible category box (+ a small tolerance), read fresh from getBoundingClientRect each time,
   // so it stays right after scrolling / resizing and child elements never block it. Nearest box wins → no overlaps.
-  const TOL = 24, OVERLAP = 0.3;
+  const TOL = 30, OVERLAP = 0.25;
   // Target box for a drop: (1) the box the pointer is in (+ tolerance; the whole box counts — title, border, cards
-  // already inside; 24 px tolerance), else (2) the box the dragged card clearly overlaps (≥ 30 % of the card's area), so a release just
+  // already inside; 30 px tolerance), else (2) the box the dragged card clearly overlaps (≥ 25 % of the card's area), so a release just
   // past an edge still lands. `card` is the card's real rect at that moment (target position, not the eased ghost).
   const zoneAt = (x, y, card) => {
     let best = null, bestD = Infinity, ov = null, ovA = 0;
@@ -4965,12 +4991,15 @@ function CrDragDrop(scope, { onDrop, scroller }) {
     return best || (ovA >= OVERLAP ? ov : null);
   };
   const cardRect = () => drag && drag.home ? { left: drag.tx, top: drag.ty, width: drag.home.width, height: drag.home.height } : null;
-  const frame = () => {
+  // The ghost is drawn exactly where the card is, offset by the point the player grabbed, so that point stays
+  // under the finger / cursor for the whole drag (no jump on pick-up, no easing lag). The slight lift (scale/tilt)
+  // pivots around the grab point too, so it never shifts the card away from the pointer.
+  const paint = () => {
     if (!drag || !drag.ghost) return;
-    const k = matchMedia("(prefers-reduced-motion: reduce)").matches ? 1 : 0.38;   // soft follow, never laggy
-    drag.gx += (drag.tx - drag.gx) * k; drag.gy += (drag.ty - drag.gy) * k;
-    drag.ghost.style.transform = `translate(${drag.gx}px, ${drag.gy}px) rotate(-2deg) scale(1.05)`;
-    // gentle auto-scroll near the edges so far-away zones stay reachable while dragging
+    drag.ghost.style.transform = `translate(${drag.tx}px, ${drag.ty}px) rotate(-1.5deg) scale(1.04)`;
+  };
+  const frame = () => {   // per-frame work that doesn't move the card: edge auto-scroll + target highlight
+    if (!drag || !drag.ghost) return;
     const r = scroller.getBoundingClientRect(), edge = 44;   // only very close to the screen edge, so dropping near a box's top never drifts
     if (drag.py < r.top + edge) scroller.scrollTop -= Math.ceil((r.top + edge - drag.py) / 6);
     else if (drag.py > r.bottom - edge) scroller.scrollTop += Math.ceil((drag.py - (r.bottom - edge)) / 6);
@@ -4982,13 +5011,16 @@ function CrDragDrop(scope, { onDrop, scroller }) {
     const r = drag.el.getBoundingClientRect();
     const g = drag.el.cloneNode(true);
     g.removeAttribute("id"); g.classList.add("cr-ghost"); g.setAttribute("aria-hidden", "true");
-    Object.assign(g.style, { width: r.width + "px", height: r.height + "px", left: "0px", top: "0px" });
+    drag.ox = drag.x0 - r.left; drag.oy = drag.y0 - r.top;                 // grab point inside the card (kept for the whole drag)
+    Object.assign(g.style, { width: r.width + "px", height: r.height + "px", left: "0px", top: "0px", transformOrigin: `${drag.ox}px ${drag.oy}px` });
     document.body.appendChild(g);
-    drag.ghost = g; drag.ox = drag.x0 - r.left; drag.oy = drag.y0 - r.top;
-    drag.gx = r.left; drag.gy = r.top; drag.tx = r.left; drag.ty = r.top; drag.home = r;
+    drag.ghost = g; drag.home = r;
+    drag.tx = drag.px - drag.ox; drag.ty = drag.py - drag.oy;              // already at the pointer: no catch-up jump
+    paint();
     drag.el.classList.add("is-lifted"); scope.classList.add("is-dragging");
     raf = requestAnimationFrame(frame);
   };
+  const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finish = (dropped) => {
     cancelAnimationFrame(raf); raf = 0;
     // the drop target is decided from the REAL release position (pointer + card rect now), not the last animation frame
@@ -4998,14 +5030,27 @@ function CrDragDrop(scope, { onDrop, scroller }) {
     d.over && d.over.classList.remove("is-over");
     if (!d.ghost) return;
     suppressClick = true; setTimeout(() => { suppressClick = false; }, 0);
-    if (target && onDrop(d.id, target.dataset.zone) !== false) { d.ghost.remove(); return; }   // accepted
-    // released outside both boxes, cancelled, or rejected (wrong box): glide back home
-    // released outside a zone (or cancelled): glide back home
-    const g = d.ghost, src = d.el;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { g.remove(); src.classList.remove("is-lifted"); return; }
-    g.style.transition = "transform .24s cubic-bezier(.3,.7,.4,1)";
-    g.style.transform = `translate(${d.home.left}px, ${d.home.top}px) rotate(0) scale(1)`;
-    setTimeout(() => { g.remove(); src.classList.remove("is-lifted"); }, 250);
+    const g = d.ghost;
+    if (target && onDrop(d.id, target.dataset.zone) !== false) {   // accepted: the board re-renders; glide the ghost into the card's new slot
+      const slot = scope.querySelector(`.cr-zone [data-card="${CSS.escape(d.id)}"]`);
+      if (!slot || reduceMotion()) { g.remove(); return; }
+      const r = slot.getBoundingClientRect();
+      slot.style.visibility = "hidden";
+      g.style.transformOrigin = "0 0";
+      g.style.transform = `translate(${d.tx}px, ${d.ty}px)`;
+      void g.offsetWidth; g.classList.add("is-settling");
+      g.style.transition = "transform .2s cubic-bezier(.25,.8,.35,1), width .2s, height .2s, opacity .2s";
+      Object.assign(g.style, { width: r.width + "px", height: r.height + "px", transform: `translate(${r.left}px, ${r.top}px)` });
+      setTimeout(() => { g.remove(); slot.style.visibility = ""; }, 210);
+      return;
+    }
+    // released outside both boxes, cancelled, or rejected (wrong box): glide back to where it started
+    const src = d.el;
+    if (reduceMotion()) { g.remove(); src.classList.remove("is-lifted"); return; }
+    const home = src.isConnected ? src.getBoundingClientRect() : d.home;
+    g.classList.add("is-settling"); g.style.transition = "transform .28s cubic-bezier(.3,.7,.4,1)";
+    g.style.transform = `translate(${home.left}px, ${home.top}px) rotate(0) scale(1)`;
+    setTimeout(() => { g.remove(); src.classList.remove("is-lifted"); }, 290);
   };
   const down = (e) => {
     const el = e.target.closest("[data-card]");
@@ -5017,8 +5062,8 @@ function CrDragDrop(scope, { onDrop, scroller }) {
   const move = (e) => {
     if (!drag || e.pointerId !== drag.pid) return;
     drag.px = e.clientX; drag.py = e.clientY;
-    if (!drag.ghost && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 7) start();
-    if (drag.ghost) { drag.tx = e.clientX - drag.ox; drag.ty = e.clientY - drag.oy; }
+    if (!drag.ghost && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 5) start();
+    if (drag.ghost) { drag.tx = e.clientX - drag.ox; drag.ty = e.clientY - drag.oy; paint(); }   // follow the pointer this very event
   };
   const up = (e) => { if (drag && e.pointerId === drag.pid) { drag.px = e.clientX; drag.py = e.clientY; if (drag.ghost) { drag.tx = e.clientX - drag.ox; drag.ty = e.clientY - drag.oy; } finish(true); } };
   const cancel = (e) => { if (drag && e.pointerId === drag.pid) finish(false); };
@@ -5330,7 +5375,9 @@ const JOURNAL_CONFIG = {
   desk: {
     image: "assets/journal2/notebook-desk.webp", w: 841, h: 1870,
     focus: [0, 548, 841, 1336],                            // must stay fully visible between the top and bottom bars
-    pages: [ [68, 618, 394, 1266], [450, 618, 780, 1266] ], // text regions: left / right page (clear of binding, cup, vase)
+    pages: [ [76, 630, 384, 1232], [462, 630, 772, 1232] ], // text regions = the flat paper only: clear of the spine and the curled bottom edge
+    lineHeights: [1.5, 1.44, 1.38, 1.32],
+    keepTogether: ["รู้เรื่อง", "กำแน่น", "พูดล้อ", "ชวนให้"],   // never split across lines                  // tried in order until the whole journal fits one spread; else it flows on
     fontPx: 28.5, minFontPx: 12.5,                           // in picture px, but never below minFontPx on screen
   },
   hand: {                                                  // ONE right paw + pencil, positioned relative to the pencil tip
@@ -5510,10 +5557,18 @@ function RabbitJournalDesk(desk, state, { mode, onDone, onSpread }) {
   let s = 1, spreads = [], marks = [], total = 0, raf = 0, last = 0, shown = 0, built = false, hand = null, curSpread = -1;
   const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
   const pct = (b) => `left:${b[0] / D.w * 100}%;top:${b[1] / D.h * 100}%;width:${(b[2] - b[0]) / D.w * 100}%;height:${(b[3] - b[1]) / D.h * 100}%`;
-  const entryHTML = (e, i) => {
-    const g = (str) => jrGraphemes(str).map(x => `<span class="g">${esc(x)}</span>`).join("");
-    return `<section class="jw-entry" data-entry="${e.id}"><h3 class="jw-eh">${g(`${i + 1}. ${e.title}`)}</h3><p class="jw-et">${g(e.text)}</p></section>`;
+  // text → word runs (Intl.Segmenter "th" word boundaries) of grapheme spans: the browser may only break between words,
+  // every vowel / tone mark stays inside its grapheme span, and the layout is final before any letter is revealed
+  const segW = (typeof Intl !== "undefined" && Intl.Segmenter) ? new Intl.Segmenter("th", { granularity: "word" }) : null;
+  const KEEP = new Set(D.keepTogether || []);            // compounds the segmenter would split (e.g. รู้|เรื่อง)
+  const words = (str) => {
+    const w = segW ? [...segW.segment(str)].map(x => x.segment) : str.split(/(\s+)/).filter(Boolean);
+    for (let i = 0; i < w.length - 1; i++) if (KEEP.has(w[i] + w[i + 1])) { w.splice(i, 2, w[i] + w[i + 1]); i--; }
+    return w;
   };
+  const g = (str) => words(str).map(w => /^\s+$/.test(w) ? jrGraphemes(w).map(x => `<span class="g">${esc(x)}</span>`).join("")
+    : `<span class="w">${jrGraphemes(w).map(x => `<span class="g">${esc(x)}</span>`).join("")}</span>`).join("");
+  const entryHTML = (e, i) => `<section class="jw-entry" data-entry="${e.id}"><h3 class="jw-eh">${g(`${i + 1}. ${e.title}`)}</h3><p class="jw-et">${g(e.text)}</p></section>`;
   // 1) fit the picture so the notebook (focus box) sits fully between the top and bottom bars
   const place = () => {
     const W = desk.clientWidth, H = desk.clientHeight, tH = top.offsetHeight, bH = bot.offsetHeight, f = D.focus;
@@ -5533,8 +5588,11 @@ function RabbitJournalDesk(desk, state, { mode, onDone, onSpread }) {
     map.style.setProperty("--fs", Math.max(D.minFontPx, D.fontPx * s) + "px");
     map.style.setProperty("--hk", (s * Hd.size).toFixed(4));
   };
-  // 2) flow the entries into page boxes (left, right, next spread…), measuring real overflow — nothing is cut or shrunk
-  const paginate = () => {
+  // 2) flow the entries into page boxes (left, right, next spread…), measuring real overflow — nothing is cut or shrunk.
+  //    Line height steps down (D.lineHeights) until everything fits one spread; if it still doesn't, entries flow on in
+  //    order, and an entry too long for a whole page is split between words and continued on the next page.
+  const fits = (pg) => pg.scrollHeight <= pg.clientHeight + 1;
+  const paginateAt = () => {
     $$(".jw-spread", map).forEach(x => x.remove());
     spreads = [];
     let page = null;
@@ -5547,9 +5605,27 @@ function RabbitJournalDesk(desk, state, { mode, onDone, onSpread }) {
     newPage();
     C.journal.entries.forEach((e, i) => {
       if (i === C.journal.rightPageStartsAt && page.side === 0 && page.el.children.length) newPage();
-      const el = h(entryHTML(e, i)); page.el.appendChild(el);
-      if (page.el.scrollHeight > page.el.clientHeight + 1 && page.el.children.length > 1) { el.remove(); newPage(); page.el.appendChild(el); }
+      let el = h(entryHTML(e, i)); page.el.appendChild(el);
+      if (fits(page.el)) return;
+      if (page.el.children.length > 1) { el.remove(); newPage(); page.el.appendChild(el); }
+      // still too long for an empty page: move whole words from the end into a continuation on the next page
+      let guard = 0;
+      while (!fits(page.el) && guard++ < 40) {
+        const body = $(".jw-et", el), cont = h(`<section class="jw-entry is-cont" data-entry="${e.id}"><p class="jw-et"></p></section>`), cb = $(".jw-et", cont);
+        while (!fits(page.el) && body.lastChild) cb.insertBefore(body.lastChild, cb.firstChild);
+        if (!cb.firstChild) break;
+        newPage(); page.el.appendChild(cont); el = cont;
+      }
     });
+    return spreads.length;
+  };
+  const paginate = () => {
+    const L = D.lineHeights || [1.5];
+    for (let k = 0; k < L.length; k++) {               // tighter lines only if that makes it fit one spread…
+      map.style.setProperty("--jw-lh", L[k]);
+      if (paginateAt() === 1) return;
+    }
+    map.style.setProperty("--jw-lh", L[0]); paginateAt();   // …otherwise keep the roomy line height and flow on
   };
   // 3) timeline: one mark per grapheme = when it appears + where the pencil tip is (measured, cached per layout)
   const measure = () => {
